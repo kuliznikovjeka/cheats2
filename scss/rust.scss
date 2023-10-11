@@ -170,7 +170,6 @@ body {
 
 	&__item {
 		&_logo {
-			margin: 0 30px;
 			@media (max-width: 767px) {
 				display: none;
 			}
@@ -565,6 +564,7 @@ body {
 	@media (max-width: 525px) {
 		padding: 15px 0 30px 0;
 	}
+
 	// .rust-video__container
 
 	&__container {
@@ -581,6 +581,9 @@ body {
 	}
 }
 .video {
+	&:not(:last-child) {
+		margin-bottom: 30px;
+	}
 	text-align: center;
 	flex: 1 1 100%;
 	position: relative;

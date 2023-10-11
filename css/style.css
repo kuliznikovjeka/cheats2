@@ -294,10 +294,6 @@ body._lock {
   }
 }
 
-.menu__item_logo {
-  margin: 0 30px;
-}
-
 @media (max-width: 767px) {
   .menu__item_logo {
     display: none;
@@ -454,8 +450,8 @@ body._lock {
 
 .hero__title {
   z-index: 10;
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -497,8 +493,8 @@ body._lock {
   font-size: 32px;
   font-weight: 200;
   line-height: 112.5%;
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -537,8 +533,8 @@ body._lock {
 
 .hero__btn {
   z-index: 10;
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -648,8 +644,8 @@ body._lock {
 }
 
 .games__link {
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -723,8 +719,8 @@ body._lock {
 }
 
 .about__title {
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -783,8 +779,8 @@ body._lock {
   font-size: 22px;
   font-weight: 200;
   line-height: 109.09091%;
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -846,8 +842,8 @@ body._lock {
 }
 
 .products__title {
-  -webkit-transform: translate(0, 110%);
-          transform: translate(0, 110%);
+  -webkit-transform: translate(0, 105%);
+          transform: translate(0, 105%);
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
@@ -873,7 +869,6 @@ body._lock {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 30px;
-  opacity: 0;
   -webkit-transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
   transition: opacity 0.4s ease 0s, transform 0.4s ease 0s;

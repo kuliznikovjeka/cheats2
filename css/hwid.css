@@ -291,10 +291,6 @@ body._lock {
   }
 }
 
-.menu__item_logo {
-  margin: 0 30px;
-}
-
 @media (max-width: 767px) {
   .menu__item_logo {
     display: none;

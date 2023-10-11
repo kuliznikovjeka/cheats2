@@ -291,10 +291,6 @@ body._lock {
   }
 }
 
-.menu__item_logo {
-  margin: 0 30px;
-}
-
 @media (max-width: 767px) {
   .menu__item_logo {
     display: none;
@@ -746,6 +742,10 @@ body._lock {
           flex: 1 1 100%;
   position: relative;
   padding-bottom: 60%;
+}
+
+.video:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .video iframe {

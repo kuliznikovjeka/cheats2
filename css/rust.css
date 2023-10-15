@@ -159,7 +159,7 @@ body._lock {
 
 @media (max-width: 480px) {
   .title-card {
-    font-size: 32px;
+    font-size: 28px;
   }
 }
 
@@ -543,6 +543,7 @@ body._lock {
   padding: 22px;
   min-width: 150px;
   border-radius: 13px;
+  min-width: 150px;
   background-color: #113635;
   text-align: center;
   -webkit-transition: background-color 0.3s ease 0s;
@@ -716,6 +717,12 @@ body._lock {
     top: 7px;
     width: 4px;
     height: 4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .item-cheat__characteristic {
+    text-align: center;
   }
 }
 

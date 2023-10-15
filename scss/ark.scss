@@ -58,7 +58,7 @@ body {
 		font-size: 36px;
 	}
 	@media (max-width: 480px) {
-		font-size: 32px;
+		font-size: 28px;
 	}
 }
 //========================================================================================================================================================
@@ -401,6 +401,7 @@ body {
 	&__item-subscribe {
 		cursor: pointer;
 		padding: 22px;
+		min-width: 150px;
 		border-radius: 13px;
 		background-color: #113635;
 		text-align: center;
@@ -550,6 +551,9 @@ body {
 				width: 4px;
 				height: 4px;
 			}
+		}
+		@media (max-width: 767px) {
+			text-align: center;
 		}
 	}
 }

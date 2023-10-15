@@ -90,7 +90,7 @@ function makeDisount() {
 							modalValidation.forEach((el) => {
 								el.classList.add('_done')
 								el.classList.remove('_error')
-								el.innerHTML = 'Промокод применён';
+								el.innerHTML = 'Promo code applied';
 							});
 
 						} else if (el.value == promoTwo) {
@@ -102,13 +102,13 @@ function makeDisount() {
 							modalValidation.forEach((el) => {
 								el.classList.add('_done')
 								el.classList.remove('_error')
-								el.innerHTML = 'Промокод применён';
+								el.innerHTML = 'Promo code applied';
 							});
 						} else if (el.value != '' && el.value != promoOne && el.value != promoTwo) {
 							modalValidation.forEach((el) => {
 								el.classList.add('_error');
 								el.classList.remove('_done');
-								el.innerHTML = 'Такого промокода не существует';
+								el.innerHTML = 'There is no such promo code';
 							});
 						}
 

@@ -58,7 +58,7 @@ body {
 		font-size: 36px;
 	}
 	@media (max-width: 480px) {
-		font-size: 32px;
+		font-size: 28px;
 	}
 }
 //========================================================================================================================================================
@@ -403,6 +403,7 @@ body {
 		padding: 22px;
 		border-radius: 13px;
 		background-color: #113635;
+		min-width: 150px;
 		text-align: center;
 		transition: background-color 0.3s ease 0s;
 		@media (any-hover: hover) {
@@ -550,6 +551,9 @@ body {
 				width: 4px;
 				height: 4px;
 			}
+		}
+		@media (max-width: 767px) {
+			text-align: center;
 		}
 	}
 }

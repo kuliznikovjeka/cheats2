@@ -38,6 +38,7 @@ function closeModal() {
 					}
 				});
 
+				addPopapContent();
 
 				modals.forEach((el) => {
 					el.classList.remove('modal__visible');
@@ -128,6 +129,36 @@ makeDisount();
 let createdParagraphs = [];  // Массив для хранения созданных параграфов
 let modalBtnsClicked = false; // Флаг для отслеживания кликов
 
+const modalHead = document.querySelectorAll('.modal__head');
+const modalPromo = document.querySelectorAll('.modal__promo');
+const modalWarningBox = document.querySelectorAll('.modal__warning-box');
+
+function removePopapContent() {
+	deleteElementOfArr(modalHead);
+	deleteElementOfArr(modalPromo);
+	deleteElementOfArr(modalWarningBox);
+	deleteElementOfArr(modalBtns);
+}
+
+function addPopapContent() {
+	addElementOfArr(modalHead);
+	addElementOfArr(modalPromo);
+	addElementOfArr(modalWarningBox);
+	addElementOfArr(modalBtns);
+}
+
+
+function deleteElementOfArr(array) {
+	array.forEach(elem => {
+		elem.style.display = 'none';
+	});
+}
+function addElementOfArr(array) {
+	array.forEach(elem => {
+		elem.style.display = 'block';
+	});
+}
+
 function showGratitudeMessage() {
 	if (!modalBtnsClicked) {
 		modalBtnsClicked = true;
@@ -135,11 +166,10 @@ function showGratitudeMessage() {
 		modalBtns.forEach((btn, index) => {
 			const promoValue = promoInput[index].value.trim();
 			let gratitudeText;
-
 			if (promoValue === promoOne) {
-				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 18px; font-weight: 700; color: #6efdfa;">${salesmanOne}</span> - аккаунт Discord для оплаты/связи`;
+				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 32px; font-weight: 700; color: #6efdfa;">${salesmanOne}</span> ← Discord account for payment/communication`;
 			} else if (promoValue === promoTwo) {
-				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 18px; font-weight: 700; color: #6efdfa;">${salesmanTwo}</span> - аккаунт Discord для оплаты/связи`;
+				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 32px; font-weight: 700; color: #6efdfa;">${salesmanTwo}</span> ← Discord account for payment/communication`;
 			} else {
 				let randomPromo;
 				if (Math.random() < 0.5) {
@@ -147,16 +177,17 @@ function showGratitudeMessage() {
 				} else {
 					randomPromo = salesmanTwo;
 				}
-				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 18px; font-weight: 700; color: #6efdfa;">${randomPromo} </span> - аккаунт Discord для оплаты/связи`;
+				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 32px; font-weight: 700; color: #6efdfa;">${randomPromo} </span> ← Discord account for payment/communication`;
 			}
 
 			// Создаем два параграфа с текстом "спасибо"
 			const p1 = document.createElement('p');
-			p1.textContent = 'Спасибо за покупку!';
-			p1.style.cssText = `display: inline-block; margin-top: 10px; font-size: 14px;`
+			p1.textContent = 'Thank you for your purchase!';
+			p1.style.cssText = `display: inline-block; margin-top: 40px; font-size: 32px; text-align: center;`
 
 			const p2 = document.createElement('p');
 			p2.innerHTML = gratitudeText;
+			p2.style.cssText = `display: inline-block; line-height: 150%;  font-size: 24px; text-align: center;`
 
 			// Вставляем параграфы после кнопок внутри соответствующего модального окна
 			const modal = modals[index];
@@ -164,13 +195,16 @@ function showGratitudeMessage() {
 			modalBtns[index].insertAdjacentElement('afterend', p2);
 
 			// Добавляем созданные параграфы в массив
-			createdParagraphs.push(p1, p2);
+			createdParagraphs.push(p2, p1);
 		});
 	}
 }
 
 modalBtns.forEach((el) => {
-	el.addEventListener('click', showGratitudeMessage);
+	el.addEventListener('click', () => {
+		showGratitudeMessage();
+		removePopapContent();
+	});
 });
 
 

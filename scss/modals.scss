@@ -1,4 +1,3 @@
-
 .modals {
 	&.modals__visible {
 		opacity: 1;
@@ -254,9 +253,32 @@
 		text-align: center;
 		font-size: 16px;
 	}
+
+	&__gratitude {
+		display: none;
+		font-size: 14px;
+		margin-top: 15px;
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+		&._show {
+			display: block;
+		}
+	}
+
+	&__contacts {
+		display: none;
+		font-size: 16px;
+		span {
+			font-size: 18px;
+			font-weight: 700;
+			color: #6efdfa;
+		}
+	}
 }
 
 .btn {
+	cursor: pointer;
 	border-radius: 13px;
 	background: #529995;
 	color: #fff;

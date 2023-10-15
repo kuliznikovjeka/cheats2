@@ -30,11 +30,20 @@ function closeModal() {
 			if (e.target == modalOverlay || e.target == close) {
 				modalOverlay.classList.remove('modal-overlay__visible');
 
+				// Удаляем созданные параграфы
+				createdParagraphs.forEach(paragraph => {
+					if (paragraph && paragraph.parentNode) {
+						paragraph.parentNode.removeChild(paragraph);
+					}
+				});
+
 				renderModal();
 
 				modals.forEach((el) => {
 					el.classList.remove('modal__visible');
 				});
+
+				modalBtnsClicked = false;
 			}
 
 		})
@@ -48,8 +57,13 @@ const promoInput = document.querySelectorAll('.modal__input');
 const addPromo = document.querySelectorAll('.modal__add-promo'); //кнопка применения скидки
 const modalPriceEdit = document.querySelectorAll('.modal__price_edit');
 
-const modalBtns = document.querySelectorAll('.modal__btn');
-const urls = ['https://www.google.com/', 'https://vk.com/'];
+const modalBtns = document.querySelectorAll('.modal__btn'); // Кнопка "купить" в popap
+
+const promoOne = 'edsdiscount';
+const promoTwo = 'Poutune';
+const salesmanOne = 'itsyaboied_';
+const salesmanTwo = 'lovusk';
+const gratitude = 'Cпасибо за покупку!'
 
 function makeDisount() {
 
@@ -58,16 +72,19 @@ function makeDisount() {
 
 			promoInput.forEach((el) => {
 
-				if (el.value == '1' || el.value == '2') {
+				if (el.value == promoOne || el.value == promoTwo) {
 					modalPriceEdit.forEach((price) => {
 						price.innerHTML = '300р'
 					});
+
+
 					modalValidation.forEach((el) => {
 						el.classList.add('_done')
 						el.classList.remove('_error')
 						el.innerHTML = 'Промокод применён';
 					});
-				} else if (el.value != '' && el.value != '1' && el.value != '2') {
+
+				} else if (el.value != '' && el.value != promoOne && el.value != promoTwo) {
 					modalValidation.forEach((el) => {
 						el.classList.add('_error');
 						el.classList.remove('_done');
@@ -82,29 +99,54 @@ function makeDisount() {
 }
 makeDisount();
 
-function changeUrl() {
-	promoInput.forEach((el, index) => {
-		const promoValue = el.value.trim();
+let createdParagraphs = [];  // Массив для хранения созданных параграфов
+let modalBtnsClicked = false; // Флаг для отслеживания кликов
 
-		let selectedUrl;
-		if (promoValue == '1') {
-			selectedUrl = urls[0];
-		} else if (promoValue == '2') {
-			selectedUrl = urls[1];
-		} else if (promoValue == '' || promoValue != '1' || promoValue != '2') {
-			// Промокод не равен '1' или '2', подставляем случайную ссылку
-			const randomNumber = Math.floor(Math.random() * 2);
-			selectedUrl = urls[randomNumber];
-		}
+function showGratitudeMessage() {
+	if (!modalBtnsClicked) {
+		modalBtnsClicked = true;
 
-		// Перенаправляем пользователя на выбранный URL для соответствующей кнопки
-		modalBtns[index].href = selectedUrl;
-	});
+		modalBtns.forEach((btn, index) => {
+			const promoValue = promoInput[index].value.trim();
+			let gratitudeText;
+
+			if (promoValue === promoOne) {
+				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 18px; font-weight: 700; color: #6efdfa;">${salesmanOne}</span> - аккаунт Discord для оплаты/связи`;
+			} else if (promoValue === promoTwo) {
+				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 18px; font-weight: 700; color: #6efdfa;">${salesmanTwo}</span> - аккаунт Discord для оплаты/связи`;
+			} else {
+				let randomPromo;
+				if (Math.random() < 0.5) {
+					randomPromo = salesmanOne;
+				} else {
+					randomPromo = salesmanTwo;
+				}
+				gratitudeText = `<span style=" display: inline-block; margin-top: 15px; font-size: 18px; font-weight: 700; color: #6efdfa;">${randomPromo} </span> - аккаунт Discord для оплаты/связи`;
+			}
+
+			// Создаем два параграфа с текстом "спасибо"
+			const p1 = document.createElement('p');
+			p1.textContent = 'Спасибо за покупку!';
+			p1.style.cssText = `display: inline-block; margin-top: 10px; font-size: 14px;`
+
+			const p2 = document.createElement('p');
+			p2.innerHTML = gratitudeText;
+
+			// Вставляем параграфы после кнопок внутри соответствующего модального окна
+			const modal = modals[index];
+			modalBtns[index].insertAdjacentElement('afterend', p1);
+			modalBtns[index].insertAdjacentElement('afterend', p2);
+
+			// Добавляем созданные параграфы в массив
+			createdParagraphs.push(p1, p2);
+		});
+	}
 }
 
 modalBtns.forEach((el) => {
-	el.addEventListener('click', changeUrl);
+	el.addEventListener('click', showGratitudeMessage);
 });
+
 
 function renderModal() {
 	promoInput.forEach((el) => {

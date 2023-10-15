@@ -262,7 +262,33 @@
   font-size: 16px;
 }
 
+.modal__gratitude {
+  display: none;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.modal__gratitude:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.modal__gratitude._show {
+  display: block;
+}
+
+.modal__contacts {
+  display: none;
+  font-size: 16px;
+}
+
+.modal__contacts span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6efdfa;
+}
+
 .btn {
+  cursor: pointer;
   border-radius: 13px;
   background: #529995;
   color: #fff;

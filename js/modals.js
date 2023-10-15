@@ -17,6 +17,7 @@ function openModal() {
 
 			document.querySelector(`[data-target="${path}"]`).classList.add('modal__visible');
 			modalOverlay.classList.add('modal-overlay__visible');
+			renderModal(path);
 		});
 
 	});
@@ -37,7 +38,6 @@ function closeModal() {
 					}
 				});
 
-				renderModal();
 
 				modals.forEach((el) => {
 					el.classList.remove('modal__visible');
@@ -60,42 +60,68 @@ const modalPriceEdit = document.querySelectorAll('.modal__price_edit');
 const modalBtns = document.querySelectorAll('.modal__btn'); // Кнопка "купить" в popap
 
 const promoOne = 'edsdiscount';
-const promoTwo = 'Poutune';
 const salesmanOne = 'itsyaboied_';
+const discountOne = 0.90;
+
+const promoTwo = 'Poutune';
 const salesmanTwo = 'lovusk';
+const discountTwo = 0.95;
+
 const gratitude = 'Cпасибо за покупку!'
 
 function makeDisount() {
 
-	addPromo.forEach((promo) => {
-		promo.addEventListener("click", () => {
+	btns.forEach((btn) => {
 
-			promoInput.forEach((el) => {
+		btn.addEventListener('click', (e) => {
+			let path = e.currentTarget.getAttribute('data-path');
+			let currentprice = document.querySelector(`[data-price="${path}"]`).innerHTML;
+			addPromo.forEach((promo) => {
+				promo.addEventListener("click", (e) => {
 
-				if (el.value == promoOne || el.value == promoTwo) {
-					modalPriceEdit.forEach((price) => {
-						price.innerHTML = '300р'
-					});
+					promoInput.forEach((el) => {
 
+						if (el.value == promoOne) {
+							modalPriceEdit.forEach((price) => {
+								let totalPrice = +currentprice * discountOne;
+								price.innerHTML = totalPrice.toFixed(2) + ' €';
+							});
 
-					modalValidation.forEach((el) => {
-						el.classList.add('_done')
-						el.classList.remove('_error')
-						el.innerHTML = 'Промокод применён';
-					});
+							modalValidation.forEach((el) => {
+								el.classList.add('_done')
+								el.classList.remove('_error')
+								el.innerHTML = 'Промокод применён';
+							});
 
-				} else if (el.value != '' && el.value != promoOne && el.value != promoTwo) {
-					modalValidation.forEach((el) => {
-						el.classList.add('_error');
-						el.classList.remove('_done');
-						el.innerHTML = 'Такого промокода не существует';
-					});
-				}
+						} else if (el.value == promoTwo) {
+							modalPriceEdit.forEach((price) => {
+								let totalPrice = +currentprice * discountTwo;
+								price.innerHTML = totalPrice.toFixed(2) + ' €';
+							});
 
+							modalValidation.forEach((el) => {
+								el.classList.add('_done')
+								el.classList.remove('_error')
+								el.innerHTML = 'Промокод применён';
+							});
+						} else if (el.value != '' && el.value != promoOne && el.value != promoTwo) {
+							modalValidation.forEach((el) => {
+								el.classList.add('_error');
+								el.classList.remove('_done');
+								el.innerHTML = 'Такого промокода не существует';
+							});
+						}
+
+					})
+
+				});
 			})
 
 		});
-	})
+
+	});
+
+
 }
 makeDisount();
 
@@ -148,13 +174,17 @@ modalBtns.forEach((el) => {
 });
 
 
-function renderModal() {
+function renderModal(price) {
 	promoInput.forEach((el) => {
 		el.value = '';
 	});
+
+	let modalPrice = document.querySelector(`[data-price="${price}"]`).innerHTML;
+
 	modalPriceEdit.forEach((el) => {
-		el.innerHTML = '500';
-	});
+		el.innerHTML = modalPrice + '€';
+	})
+
 	modalValidation.forEach((el) => {
 		el.innerHTML = '';
 	})

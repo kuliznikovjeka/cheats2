@@ -935,7 +935,7 @@ body._lock {
   max-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 19px;
+  border-radius: 24px;
 }
 
 .products__desc {
